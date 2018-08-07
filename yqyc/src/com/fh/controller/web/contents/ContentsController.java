@@ -43,7 +43,7 @@ import com.fh.service.web.share.ShareManager;
 
 /** 
  * 说明：新闻内容管理
- * 创建人：xiehonglun
+ * 创建人：JFaith
  * 创建时间：2018-03-16
  */
 @Controller
