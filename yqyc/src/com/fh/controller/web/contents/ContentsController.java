@@ -117,7 +117,7 @@ public class ContentsController extends BaseController {
 		mv.setViewName("save_result");
 		return mv;
 	}
-	//文章分享保存
+	//文章分享保存文章内容
 	@RequestMapping(value="/saveShare")
 	public ModelAndView saveShare(@RequestParam String CONTENTS_ID,@RequestParam String ARTICAL_TYPE,@RequestParam String menuIds) throws Exception{
 		logBefore(logger, Jurisdiction.getUsername()+"修改Contents状态");
