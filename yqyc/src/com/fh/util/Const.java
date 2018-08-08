@@ -35,6 +35,9 @@ public class Const {
 	public static final String FILEPATHTWODIMENSIONCODE = "uploadFiles/twoDimensionCode/"; //二维码存放路径
 	public static final String NO_INTERCEPTOR_PATH = ".*/((login)|(logout)|(code)|(app)|(static)|(main)|(websocket)|(fhadmin)|(web)|(fh_static_1)|(fh_static_2)|(fh_static_3)|(fh_static_4)|(ueditor)|(index)|(uploadImgs)|(attached)|(uploadFiles)).*";	//不对匹配该值的访问路径拦截（正则）
 	public static ApplicationContext WEB_APP_CONTEXT = null; //该值会在web容器启动时由WebAppContextListener初始化
+	public static final String PATH = "https://api.miaodiyun.com/20150822/industrySMS/sendSMS";//短信接口地址
+	public static final String SID = "7f8d0af4432b4e3bb2c82dc231f1c7e3";//短信接口SID
+	public static final String TOKEN = "5787cad95c0644a9b606aed500b3b102";//短信接口的TOKEN
 	
 	/**
 	 * APP Constants

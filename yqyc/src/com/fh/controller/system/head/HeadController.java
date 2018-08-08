@@ -134,9 +134,7 @@ public class HeadController extends BaseController {
 	 * 刘玖玖
 	 */
 	
-	private static final String PATH = "https://api.miaodiyun.com/20150822/industrySMS/sendSMS";
-	private static final String SID = "7f8d0af4432b4e3bb2c82dc231f1c7e3";
-	private static final String TOKEN = "5787cad95c0644a9b606aed500b3b102";
+	
 	
 	@RequestMapping(value="/sendSms")
 	@ResponseBody
@@ -149,24 +147,20 @@ public class HeadController extends BaseController {
 			request.setCharacterEncoding("UTF-8");
 			response.setCharacterEncoding("UTF-8");
 			String phone = request.getParameter("PHONE");
-			System.out.println("传过来的电话是："+phone);
-			
 			/*String name = request.getParameter("name");
 			String time = request.getParameter("time");
 			String address = request.getParameter("address");*/
 			/*String name = "张三";
 			String time = "2018-08-08 14:00";
 			String address = "智联招聘";*/
-			
 			String[] split = phone.split(";");
 			for(int i=0;i<split.length;i++){
 				String random = getRandom();
 				String timestamp = getTimestamp();
-				String sig = getSig(SID,TOKEN,timestamp);
+				String sig = getSig(Const.SID,Const.TOKEN,timestamp);
 				String smsContext = "【弈趣云创】尊敬的用户，您的验证码为"+random+"";
-				String args = "accountSid="+SID+"&smsContent="+smsContext+"&to="+split[i]+"&timestamp="+timestamp+"&sig="+sig+"&respDataType=JSON";
-				System.out.println("args=="+args);
-				URL url = new URL(PATH);
+				String args = "accountSid="+Const.SID+"&smsContent="+smsContext+"&to="+split[i]+"&timestamp="+timestamp+"&sig="+sig+"&respDataType=JSON";
+				URL url = new URL(Const.PATH);
 				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 				connection.setRequestMethod("POST");
 				connection.setRequestProperty("Content-type","application/x-www-form-urlencoded");
@@ -181,14 +175,11 @@ public class HeadController extends BaseController {
 				sb = new StringBuilder();
 				String temp = "";
 				while((temp = in.readLine())!=null){
-					System.out.println("temp=="+temp);
 					sb.append(temp);
-					System.out.println("temp======="+temp);
 				}
 				map.put("sb", sb);
 				map.put("random", random);
-				/*System.out.println("sb-----"+sb);
-				System.out.println("随机数是-----"+random);
+				/*System.out.println("随机数是-----"+random);
 				response.getWriter().print(random);*/
 			}
 		}catch(Exception e){
@@ -205,8 +196,6 @@ public class HeadController extends BaseController {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(sb);
-		System.out.println(map);
 		return map;
 	}
 	/*
@@ -216,7 +205,6 @@ public class HeadController extends BaseController {
 		Date date = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		String format = simpleDateFormat.format(date);
-		System.out.println(format);
 		return format;
 	}
 	/*
@@ -227,7 +215,6 @@ public class HeadController extends BaseController {
 		if(randNum.length()!=6){
 			return getRandom();
 		}
-		System.out.println(randNum);
 		return randNum;
 	}
 	/*
@@ -269,8 +256,7 @@ public class HeadController extends BaseController {
 	public static void main(String[] args) {
 		getTimestamp();
 		getRandom();
-		String sig = getSig(SID,TOKEN,getTimestamp());
-		System.out.println(sig+"hello");
+		String sig = getSig(Const.SID,Const.TOKEN,getTimestamp());
 	}
 	
 	/**发送短信
