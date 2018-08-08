@@ -30,12 +30,32 @@ function sendSms(){
 	$("#zhongxin2").show();
 	
 	var PHONE = $("#PHONE").val();
-	var CONTENT = $("#CONTENT").val();
+	/*var CONTENT = $("#CONTENT").val();
 	var isAll = $("#isAll").val();
 	var TYPE  = $("#TYPE").val();
-	var fmsg = "${pd.msg}";
+	var fmsg = "${pd.msg}";*/
 	
 	$.ajax({
+		type: "POST",
+		url: locat+'/head/sendSms.do?tm='+new Date().getTime(),
+    	data: {PHONE:PHONE},
+		dataType:'json',
+		cache: false,
+		success: function(data){
+			if(data.sb.substring(13,18) == "00000"){
+				alert("发送成功,验证码是："+data.random);
+				 setTimeout("close()",3000);
+				 timer(3);
+			}
+			else{
+				alert("发送失败，请重试，错误内容是："+data.sb);
+				 setTimeout("close()",3000);
+				 timer(3);
+			}
+		}
+	})
+	
+	/*$.ajax({
 		type: "POST",
 		url: locat+'/head/sendSms.do?tm='+new Date().getTime(),
     	data: {PHONE:PHONE,CONTENT:CONTENT,isAll:isAll,TYPE:TYPE,fmsg:fmsg},
@@ -66,7 +86,7 @@ function sendSms(){
 				 timer(5);
 			 });
 		}
-	});
+	});*/
 	
 }
 

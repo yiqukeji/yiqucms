@@ -63,22 +63,22 @@
 		<table style="width:99%;margin-top: 12px;margin-left: 9px;">
 			<tr>
 				<td style="margin-top:0px;">
-					 <div style="float: left;"><textarea name="PHONE" id="PHONE" rows="1" cols="50" style="width:520px;height:32px;" placeholder="请输入对方手机号,多个请用(;)分号隔开" title="请输入对方手机号,多个请用(;)分号隔开">${pd.PHONE}</textarea></div>
+					 <div style="float: left;"><textarea name="PHONE" id="PHONE" rows="300" cols="150" style="width:520px;height:200px;" placeholder="请输入对方手机号,多个请用(;)分号隔开" title="请输入对方手机号,多个请用(;)分号隔开">${pd.PHONE}</textarea></div>
 					 <div style="float: right;margin-right: 25px;"><a class='btn btn-mini btn-info' title="编辑手机号" onclick="dialog_open();"><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></a></div>
 				</td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td id="nr">
 					 <textarea name="CONTENT" id="CONTENT" style="width:98%;height:165px;" rows="7" cols="50" title="第三方短信内容需要提交官方审核,否则发送失败!">您的验证码是：12358 。请不要把验证码泄露给其他人。</textarea>
 				</td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td style="text-align: center;">
 					<a class="btn btn-mini btn-primary" onclick="sendSms();">发送</a>
 					<a class="btn btn-mini btn-danger" onclick="top.Dialog.close();">取消</a>
-					<label style="float:left;padding-left: 32px;"><input name="form-field-radio" id="form-field-radio1" onclick="setType('1');" class="ace" checked="checked" type="radio" value="icon-edit"><span class="lbl">短信接口1</span></label>
+					<!-- <label style="float:left;padding-left: 32px;"><input name="form-field-radio" id="form-field-radio1" onclick="setType('1');" class="ace" checked="checked" type="radio" value="icon-edit"><span class="lbl">短信接口1</span></label>
 					<label style="float:left;padding-left: 5px;"><input name="form-field-radio" id="form-field-radio2" onclick="setType('2');" class="ace"  type="radio" value="icon-edit"><span class="lbl">短信接口2</span></label>
-					<label style="float:left;padding-left: 15px;"><input name="form-field-checkbox" type="checkbox" id="allusers" class="ace"  onclick="isAll();" /><span class="lbl">全体用户</span></label>
+					<label style="float:left;padding-left: 15px;"><input name="form-field-checkbox" type="checkbox" id="allusers" class="ace"  onclick="isAll();" /><span class="lbl">全体用户</span></label> -->
 				</td>
 			</tr>
 		</table>
