@@ -43,12 +43,22 @@ function sendSms(){
 		cache: false,
 		success: function(data){
 			if(data.sb.substring(13,18) == "00000"){
-				alert("发送成功,验证码是："+data.random);
+				 $("#msg").tips({
+						side:3,
+			            msg:'成功发出',
+			            bg:'#68B500',
+			            time:2
+				      });
 				 setTimeout("close()",3000);
 				 timer(3);
 			}
 			else{
-				alert("发送失败，请重试，错误内容是："+data.sb);
+				 $("#msg").tips({
+						side:3,
+			            msg:'发送失败，原因'+data.sb,
+			            bg:'#68B500',
+			            time:2
+				      });
 				 setTimeout("close()",3000);
 				 timer(3);
 			}
