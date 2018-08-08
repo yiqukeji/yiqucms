@@ -105,8 +105,8 @@ public class ApplyController extends BaseController {
 		}
 		page.setPd(pd);
 		List<PageData>	varList = applyService.list(page);	//列出Apply列表
-		mv.setViewName("web/apply/apply_list");
 		mv.addObject("varList", varList);
+		mv.setViewName("web/apply/apply_list");
 		mv.addObject("pd", pd);
 		mv.addObject("QX",Jurisdiction.getHC());	//按钮权限
 		return mv;

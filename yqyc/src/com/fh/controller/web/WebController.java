@@ -581,6 +581,7 @@ public class WebController extends BaseController {
             String INSTITUTION,
             String WORK_NAME,
             String TEL,
+            String EMAIL,
             HttpServletRequest request) throws Exception{
 		this.init(request);
 		String img1="";
@@ -614,6 +615,7 @@ public class WebController extends BaseController {
 		pd.put("TEL",TEL);
 		pd.put("ADDRESS",ADDRESS);
 		pd.put("FILESURL",img1);
+		pd.put("EMAIL",EMAIL);
 		applyService.save(pd);
 		map.put("result", "success");
 		return AppUtil.returnObject(new PageData(), map);
