@@ -1,11 +1,22 @@
 package com.fh.controller.system.head;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.session.Session;
 import org.springframework.stereotype.Controller;
@@ -117,10 +128,155 @@ public class HeadController extends BaseController {
 		return mv;
 	}
 	
+
+	/**发送短信
+	 * @return
+	 * 刘玖玖
+	 */
+	
+	private static final String PATH = "https://api.miaodiyun.com/20150822/industrySMS/sendSMS";
+	private static final String SID = "7f8d0af4432b4e3bb2c82dc231f1c7e3";
+	private static final String TOKEN = "5787cad95c0644a9b606aed500b3b102";
+	
+	@RequestMapping(value="/sendSms")
+	@ResponseBody
+	public Object sendSms(HttpServletRequest request, HttpServletResponse response){
+		BufferedReader in = null;
+		OutputStreamWriter out = null;
+		StringBuilder sb = null;
+		Map<String,Object> map = new HashMap<String,Object>();
+		try{
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			String phone = request.getParameter("PHONE");
+			System.out.println("传过来的电话是："+phone);
+			
+			/*String name = request.getParameter("name");
+			String time = request.getParameter("time");
+			String address = request.getParameter("address");*/
+			/*String name = "张三";
+			String time = "2018-08-08 14:00";
+			String address = "智联招聘";*/
+			
+			String[] split = phone.split(";");
+			for(int i=0;i<split.length;i++){
+				String random = getRandom();
+				String timestamp = getTimestamp();
+				String sig = getSig(SID,TOKEN,timestamp);
+				String smsContext = "【弈趣云创】尊敬的用户，您的验证码为"+random+"";
+				String args = "accountSid="+SID+"&smsContent="+smsContext+"&to="+split[i]+"&timestamp="+timestamp+"&sig="+sig+"&respDataType=JSON";
+				System.out.println("args=="+args);
+				URL url = new URL(PATH);
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod("POST");
+				connection.setRequestProperty("Content-type","application/x-www-form-urlencoded");
+				connection.setDoInput(true);
+				connection.setDoOutput(true);
+				//提交数据
+				out = new OutputStreamWriter(connection.getOutputStream(),"UTF-8");
+				out.write(args);
+				out.flush();
+				//读取网络请求返回参数
+				in = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
+				sb = new StringBuilder();
+				String temp = "";
+				while((temp = in.readLine())!=null){
+					System.out.println("temp=="+temp);
+					sb.append(temp);
+					System.out.println("temp======="+temp);
+				}
+				map.put("sb", sb);
+				map.put("random", random);
+				/*System.out.println("sb-----"+sb);
+				System.out.println("随机数是-----"+random);
+				response.getWriter().print(random);*/
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(in!=null){
+					in.close();
+				}
+				if(out!=null){
+					out.close();
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		System.out.println(sb);
+		System.out.println(map);
+		return map;
+	}
+	/*
+	 * 获取时间戳
+	 */
+	private static String getTimestamp(){
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		String format = simpleDateFormat.format(date);
+		System.out.println(format);
+		return format;
+	}
+	/*
+	 * 获取随机数
+	 */
+	private static String getRandom(){
+		String randNum = new Random().nextInt(10000000)+"";
+		if(randNum.length()!=6){
+			return getRandom();
+		}
+		System.out.println(randNum);
+		return randNum;
+	}
+	/*
+	 * 获取加密
+	 */
+	private static String getSig(String...strings){
+		StringBuilder sb = new StringBuilder();
+		if(strings.length==0||strings==null){
+			return "";
+		}
+		else{
+			String temp = "";
+			for(String string:strings){
+				temp+=string;
+			}
+			try{
+				MessageDigest digest = MessageDigest.getInstance("MD5");
+				byte[] bytes = temp.getBytes();
+				byte[] digest2 = digest.digest(bytes);
+				for(byte b:digest2){
+					String hex = Integer.toHexString(b&0xff);
+					if(hex.length()==1){
+						sb.append("0"+hex);
+					}
+					else{
+						sb.append(hex);
+					}
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			return sb.toString();
+		}
+	}
+	/**
+	 * test
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		getTimestamp();
+		getRandom();
+		String sig = getSig(SID,TOKEN,getTimestamp());
+		System.out.println(sig+"hello");
+	}
 	
 	/**发送短信
 	 * @return
 	 */
+	/*
 	@RequestMapping(value="/sendSms")
 	@ResponseBody
 	public Object sendSms(){
@@ -190,7 +346,7 @@ public class HeadController extends BaseController {
 		pdList.add(pd);
 		map.put("list", pdList);
 		return AppUtil.returnObject(pd, map);
-	}
+	}*/
 	
 	/**去发送电子邮件页面
 	 * @return
