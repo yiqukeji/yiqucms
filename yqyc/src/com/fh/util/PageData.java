@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 public class PageData extends HashMap implements Map{
 	
 	private static final long serialVersionUID = 1L;
-	
 	Map map = null;
 	HttpServletRequest request;
 	public PageData(HttpServletRequest request){

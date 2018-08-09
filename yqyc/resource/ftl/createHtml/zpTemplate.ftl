@@ -85,15 +85,20 @@
 					<input value="" name="WORK_ID" hidden="hidden" id="typeId"/>
 					<div class="input-group bbb">
 						<span class="input-group-btn">
-	                        <button class="btn btn-default"  type="button">姓&emsp;&emsp;名</button>
+	                        <button  class="btn btn-default"  type="button">姓&emsp;&emsp;名</button>
 	                    </span>
-						<input type="text" class="form-control" name="NAME">
+						<input type="text" class="form-control userName" name="NAME">
+						
 						<span class="input-group-btn">
 	                        <button class="btn btn-default"  type="button">联系电话</button>
 	                    </span>
-						<input type="text" class="form-control" name="TEL">
+						<input type="text" class="form-control userPhone" name="TEL">
+						
+						<span class="input-group-btn">
+	                        <button class="btn btn-default"  type="button">邮箱</button>
+	                    </span>
+						<input type="text" class="form-control userEmail" name="EMAIL">
 					</div>
-					
 					<div class="input-group aaa">
 						<span class="input-group-btn">
 	                        <button class="btn btn-default"  type="button">姓&emsp;&emsp;名</button>
@@ -107,6 +112,7 @@
 	                    </span>
 						<input type="text" class="form-control" name="TEL">
 					</div>
+					
 					
 					<div class="input-group">
 						<span class="input-group-btn">
@@ -135,7 +141,7 @@
 						<span class="input-group-btn">
 		                    <button class="btn btn-default" type="button">毕业院校</button>
 		                </span>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control biyeSchool">
 					</div>
 					
 					<div class="input-group aaa">
@@ -163,31 +169,31 @@
 						<span class="input-group-btn">
 	                        <button class="btn btn-default" type="button">出生年月</button>
 	                    </span>
-						<input type="text" class="time" id="datepicker" name="BORN">
+						<input type="text" class="time bothDate" id="datepicker" name="BORN">
 					</div>
 					<div class="input-group">
 						<span class="input-group-btn">
 	                        <button class="btn btn-default" type="button">应聘职位</button>
 	                    </span>
-						<input type="text" class="form-control" name="WORK_NAME">
+						<input type="text" class="form-control ypJob" name="WORK_NAME">
 					</div>
 					<div class="input-group">
 						<span class="input-group-btn">
 	                        <button class="btn btn-default" type="button">期望薪资</button>
 	                    </span>
-						<input type="text" class="form-control" name="SALARY">
+						<input type="text" class="form-control hopeMoney" name="SALARY">
 					</div>
 					<div class="input-group">
 						<span class="input-group-btn">
 	                        <button class="btn btn-default" type="button">专业特长</button>
 	                    </span>
-						<input type="text" class="form-control" name="SPECAILTY">
+						<input type="text" class="form-control hobby" name="SPECAILTY">
 					</div>
 					<div class="input-group">
 						<span class="input-group-btn">
 	                        <button class="btn btn-default" type="button">现居住地</button>
 	                    </span>
-						<input type="text" class="form-control" name="ADDRESS">
+						<input type="text" class="form-control nowAddress" name="ADDRESS">
 					</div>
 					<div class="input-group btn_group btn_group_c">
 						<span class="input-group-btn">
@@ -224,6 +230,7 @@
 		<script type="text/javascript" src="fh_static_1/js/child.js"></script>
 		<script src="fh_static_1/js/jquery.js"></script>
 		<script src="fh_static_1/js/jquery-ui.js"></script>
+		<script src="fh_static_1/js/pdtj.js"></script>
 
 		<script>
 			$(function(){
@@ -263,7 +270,7 @@
 				$(".tan").css("display","none");
 				})
 				//数据提交
-		    	$(".tijiao").click(function(){
+		    	$(".tijiao1").click(function(){
 		    	var form = new FormData($("#tf")[0]);
 		    	$.ajax({
                 url:"web/apply.do",
