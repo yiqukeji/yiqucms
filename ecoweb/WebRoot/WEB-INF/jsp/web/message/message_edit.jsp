@@ -32,10 +32,6 @@
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">标题:</td>
-								<td><input type="text" name="TITLE" id="TITLE" value="${pd.TITLE}" maxlength="100" placeholder="这里输入标题" title="标题" style="width:98%;"/></td>
-							</tr>
-							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">姓名:</td>
 								<td><input type="text" name="NAME" id="NAME" value="${pd.NAME}" maxlength="50" placeholder="这里输入姓名" title="姓名" style="width:98%;"/></td>
 							</tr>
@@ -48,12 +44,14 @@
 								<td><input type="text" name="EMAIL" id="EMAIL" value="${pd.EMAIL}" maxlength="20" placeholder="这里输入邮箱" title="邮箱" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">内容:</td>
-								<td><input type="text" name="CONTEXT" id="CONTEXT" value="${pd.CONTEXT}" maxlength="150" placeholder="这里输入内容" title="内容" style="width:98%;"/></td>
-							</tr>
-							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">创建时间:</td>
 								<td><input class="span10 date-picker" name="C_TIME" id="C_TIME" value="${pd.C_TIME}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="创建时间" title="创建时间" style="width:98%;"/></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">内容:</td>
+								<td>
+								 <textarea name="CONTEXT" id="CONTEXT" class="form-control" rows="3">${pd.CONTEXT}</textarea>
+								</td>
 							</tr>
 							<tr>
 								<td style="text-align: center;" colspan="10">

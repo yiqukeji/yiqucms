@@ -1,0 +1,153 @@
+@charset "utf-8";
+.child {
+	padding: 0px;
+	margin-top: 60px;
+}
+
+.title_box {
+	width: 90%;
+	height: 66px;
+	background: #054294;
+	text-align: center;
+	line-height: 66px;
+}
+
+.title_box p {
+	font-size: 26px;
+	color: white;
+	border-bottom: 1px solid white;
+	margin-bottom: 0px;
+}
+
+.title_box a {
+	display: block;
+	width: 100%;
+	height: 46px;
+	text-align: center;
+	line-height: 46px;
+	color: black;
+	font-size: 16px;
+	background: #eef3fa;
+}
+
+.title_box a:hover {
+	background: #054294;
+	color: white;
+}
+
+.address {
+	width: 100%;
+	height: auto;
+}
+
+.address p {
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	font-size: 14px;
+	border-bottom: 2px solid gainsboro;
+}
+
+.list-group-item {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border: none;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.list_group_box {
+	width: 100%;
+	height: auto;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed gainsboro;
+}
+
+.list_group_box a {
+	display: inline-block;
+	width: 70%;
+	height: auto;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 14px;
+}
+
+.list_group_box a:hover {
+	color: #054294;
+}
+
+.list_group_box span {
+	float: right;
+	font-size: 14px;
+}
+
+.active {
+	background: #054294 !important;
+	color: white !important;
+}
+
+
+/*分页样式开始*/
+
+.page_div {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: 15px;
+	font-family: "microsoft yahei";
+	color: #666666;
+	margin-right: 10px;
+	padding-left: 20px;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+#firstPage,
+#lastPage {
+	width: 50px;
+	color: #0073A9;
+	border: 1px solid #0073A9!important;
+}
+
+.page_div a {
+	min-width: 30px;
+	height: 28px;
+	border: 1px solid #dce0e0!important;
+	text-align: center;
+	margin: 0 4px;
+	cursor: pointer;
+	line-height: 28px;
+	color: #666666;
+	font-size: 13px;
+	display: inline-block;
+}
+
+.page_div .current {
+	background-color: #0073A9;
+	border-color: #0073A9;
+	color: #FFFFFF;
+}
+
+.totalPages {
+	margin: 0 10px;
+}
+
+.totalPages span,
+.totalSize span {
+	color: #0073A9;
+	margin: 0 5px;
+}
+
+/*分页样式结束*/
+
+@media only screen and (min-width: 100px) and (max-width: 768px) {
+	.child {
+		padding: 0px;
+		margin-top: 30px;
+	}
+	.child>div:first-child {
+		display: none;
+	}
+}

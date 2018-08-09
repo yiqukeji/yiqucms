@@ -19,7 +19,7 @@
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
 					<a class="navbar-brand">
-						<small> <i class=""><img src="fh_static_1/images/tuanhui.png"/></i> ${pd.SYSNAME} </small>
+						<small> <i class=""><img style="width:101px;height:31px;" src="fh_static_1/img/tuanhui.png"/></i></small>
 					</a>
 
 					<!-- /section:basics/navbar.layout.brand -->

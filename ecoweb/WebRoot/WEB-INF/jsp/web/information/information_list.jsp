@@ -87,11 +87,7 @@
 											<td>${var.EMAIL}</td>
 										</tr>
 										<tr>
-											<th class="center">QQ</th>
-											<td>${var.QQ}</td>
-										</tr>
-										<tr>
-											<th class="center">邮箱</th>
+											<th class="center">邮编</th>
 											<td>${var.FAX}</td>
 										</tr>
 										<tr>

@@ -1,6 +1,7 @@
 package com.fh.controller.web.contents;
 
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,9 +12,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONArray;
+
 import org.apache.shiro.session.Session;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +27,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fh.controller.base.BaseController;
 import com.fh.entity.Page;
+import com.fh.entity.system.Menu;
+import com.fh.entity.system.Role;
 import com.fh.util.AppUtil;
 import com.fh.util.Const;
 import com.fh.util.ObjectExcelView;
 import com.fh.util.PageData;
 import com.fh.util.Jurisdiction;
+import com.fh.util.RightsHelper;
 import com.fh.util.Tools;
 import com.fh.service.system.dictionaries.DictionariesManager;
+import com.fh.service.system.menu.MenuManager;
 import com.fh.service.web.contents.ContentsManager;
 
 /** 
@@ -46,10 +54,12 @@ public class ContentsController extends BaseController {
 	private ContentsManager contentsService;
 	@Resource(name="dictionariesService")
 	private DictionariesManager dictionariesService;
+	@Resource(name="menuService")
+	private MenuManager menuService;
 	
 	
 	/**保存
-	 * @param
+	 * @param 
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/save")
@@ -67,6 +77,7 @@ public class ContentsController extends BaseController {
 		return mv;
 	}
 	
+	
 	/**删除
 	 * @param out
 	 * @throws Exception
@@ -83,7 +94,7 @@ public class ContentsController extends BaseController {
 	}
 	
 	/**修改
-	 * @param
+	 * @param 
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/edit")
@@ -100,6 +111,70 @@ public class ContentsController extends BaseController {
 		mv.setViewName("save_result");
 		return mv;
 	}
+	//文章分享保存
+	@RequestMapping(value="/saveShare")
+	public ModelAndView saveShare(@RequestParam String CONTENTS_ID,@RequestParam String ARTICAL_TYPE,@RequestParam String menuIds) throws Exception{
+		logBefore(logger, Jurisdiction.getUsername()+"修改Contents状态");
+		if(!Jurisdiction.buttonJurisdiction(menuUrl, "edit")){return null;} //校验权限
+//		ModelAndView mv = this.getModelAndView();
+//		PageData pd = new PageData();
+//		pd.put("ARTICAL_TYPE", ARTICAL_TYPE);
+//		pd = this.getPageData();
+//		contentsService.editByType(pd);
+		
+		ModelAndView mv = this.getModelAndView();
+		PageData pd = new PageData();
+		if(null != menuIds && !"".equals(menuIds.trim())){
+		BigInteger rights = RightsHelper.sumRights(Tools.str2StrArray(menuIds));//用菜单ID做权处理
+		pd.put("CONTENTS_ID", CONTENTS_ID);
+		pd.put("ARTICAL_TYPE", ARTICAL_TYPE);
+		pd.put("RIGHTDATE", rights);
+		contentsService.editByType(pd);
+		contentsService.editRight(pd);
+		}else{
+			pd.put("CONTENTS_ID", CONTENTS_ID);
+			pd.put("ARTICAL_TYPE", "");
+			pd.put("RIGHTDATE", "");
+			contentsService.editByType(pd);
+			contentsService.editRight(pd);
+		}
+		
+		
+		
+		mv.addObject("msg","success");
+		mv.setViewName("save_result");
+		return mv;
+	}
+	//文章分享
+	@RequestMapping(value="/goShareEdit")
+	public ModelAndView goShareEdit(Model model,@RequestParam("CONTENTS_ID")String CONTENTS_ID )throws Exception{
+		ModelAndView mv = this.getModelAndView();
+		try{
+			List<Menu> menuList = menuService.listAllMenuQx("80");	//获取所有菜单
+//			menuList = this.readMenu(menuList);	
+//			JSONArray arr = JSONArray.fromObject(menuList);
+//			String json = arr.toString();
+//			json = json.replaceAll("MENU_ID", "id").replaceAll("PARENT_ID", "pId").replaceAll("MENU_NAME", "name").replaceAll("subMenu", "nodes").replaceAll("hasMenu", "checked");
+//			model.addAttribute("zTreeNodes", json);
+			
+			PageData pds = new PageData();
+			pds.put("CONTENTS_ID", CONTENTS_ID);
+			pds = contentsService.findById(pds);
+			String qx = (String)pds.get("RIGHTDATE");
+			menuList = this.readMenu0(menuList,qx);
+			JSONArray arr = JSONArray.fromObject(menuList);
+			String json = arr.toString();
+			json = json.replaceAll("MENU_ID", "id").replaceAll("PARENT_ID", "pId").replaceAll("MENU_NAME", "name").replaceAll("subMenu", "nodes").replaceAll("hasMenu", "checked");
+			model.addAttribute("zTreeNodes", json);
+			
+			
+			model.addAttribute("CONTENTS_ID", CONTENTS_ID);
+			mv.setViewName("web/contents/share_edit");
+		} catch(Exception e){
+			logger.error(e.toString(), e);
+		}
+		return mv;
+	}	
 	
 	/**列表
 	 * @param page
@@ -108,19 +183,25 @@ public class ContentsController extends BaseController {
 	@RequestMapping(value="/list")
 	public ModelAndView list(Page page) throws Exception{
 		logBefore(logger, Jurisdiction.getUsername()+"列表Contents");
-		//if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;} //校验权限(无权查看时页面会有提示,如果不注释掉这句代码就无法进入列表页面,所以根据情况是否加入本句代码)
+//		if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;} //校验权限(无权查看时页面会有提示,如果不注释掉这句代码就无法进入列表页面,所以根据情况是否加入本句代码)
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		String keywords = pd.getString("keywords");
+		String PUB_TYPE = pd.getString("PUB_TYPE");
 		if(null != keywords && !"".equals(keywords)){
 			pd.put("keywords", keywords.trim());
 		}
 		page.setPd(pd);
 		List<PageData>	varList = contentsService.list(page);	//列出Contents列表
+		if(PUB_TYPE.equals("eo01")||PUB_TYPE.equals("eo03")){//简介/组织机构
+		mv.setViewName("web/contents/introduction");	
+		}else{
 		mv.setViewName("web/contents/contents_list");
+		}
 		mv.addObject("varList", varList);
 		mv.addObject("pd", pd);
+		Map<String, String> str = Jurisdiction.getHC();
 		mv.addObject("QX",Jurisdiction.getHC());	//按钮权限
 		return mv;
 	}
@@ -135,15 +216,24 @@ public class ContentsController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		List<PageData> subList = dictionariesService.subListPage("job");
-		mv.setViewName("web/contents/contents_edit");
+		List<PageData> subList1 = dictionariesService.subListPage("xzjg");
+		List<PageData> subList2 = dictionariesService.subListPage("kyjg");
+		if(pd.getString("PUB_TYPE").equals("eo01")||pd.getString("PUB_TYPE").equals("eo03")){
+			mv.setViewName("web/contents/introduction_edit");	
+			}else{
+			mv.setViewName("web/contents/contents_edit");
+		}
 		//获取系统管理登录用户名
 		PageData pds = new PageData();
 		Session session = Jurisdiction.getSession();
 		pds = (PageData)session.getAttribute(Const.SESSION_userpds);
 		mv.addObject("pds", pds);
 		mv.addObject("msg", "save");
+		mv.addObject("type", "0");
 		mv.addObject("pd", pd);
 		mv.addObject("subList", subList);
+		mv.addObject("subList1", subList1);
+		mv.addObject("subList2", subList2);
 		return mv;
 	}	
 	
@@ -158,7 +248,14 @@ public class ContentsController extends BaseController {
 		pd = this.getPageData();
 		pd = contentsService.findById(pd);	//根据ID读取
 		List<PageData> subList = dictionariesService.subListPage("job");
+		List<PageData> subList1 = dictionariesService.subListPage("xzjg");
+		List<PageData> subList2 = dictionariesService.subListPage("kyjg");
+		
+		if(pd.getString("PUB_TYPE").equals("eo01")||pd.getString("PUB_TYPE").equals("eo03")){
+		mv.setViewName("web/contents/introduction_edit");	
+		}else{
 		mv.setViewName("web/contents/contents_edit");
+		}
 		mv.addObject("msg", "edit");
 		//获取系统管理登录用户名
 		PageData pds = new PageData();
@@ -167,6 +264,8 @@ public class ContentsController extends BaseController {
 		mv.addObject("pds", pds);
 		mv.addObject("pd", pd);
 		mv.addObject("subList", subList);
+		mv.addObject("subList1", subList1);
+		mv.addObject("subList2", subList2);
 		return mv;
 	}	
 	 /**批量删除
@@ -240,7 +339,19 @@ public class ContentsController extends BaseController {
 		mv = new ModelAndView(erv,dataMap);
 		return mv;
 	}
-	
+	/**
+	 * 根据web_contents表中的相关字段来改变状态
+	 * @param menuList
+	 * @param roleRights
+	 * @return
+	 */
+	public List<Menu> readMenu0(List<Menu> menuList,String ARTICAL_TYPE){
+		for(int i=0;i<menuList.size();i++){
+			menuList.get(i).setHasMenu(RightsHelper.testRights(ARTICAL_TYPE, menuList.get(i).getMENU_ID()));
+			this.readMenu0(menuList.get(i).getSubMenu(), ARTICAL_TYPE);					//是：继续排查其子菜单
+		}
+		return menuList;
+	}
 	@InitBinder
 	public void initBinder(WebDataBinder binder){
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");

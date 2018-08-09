@@ -8,10 +8,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,10 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import org.apache.http.HttpResponse;
+import org.apache.shiro.session.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,14 +33,12 @@ import com.fh.service.system.statistics.StatisticsManager;
 import com.fh.service.web.contents.ContentsManager;
 import com.fh.service.web.leavemsg.LeavemsgManager;
 import com.fh.service.web.message.MessageManager;
-import com.fh.service.web.news.NewsManager;
 import com.fh.util.AppUtil;
 import com.fh.util.Const;
 import com.fh.util.Counter;
 import com.fh.util.DateUtil;
-import com.fh.util.MenuTree;
+import com.fh.util.Jurisdiction;
 import com.fh.util.PageData;
-import com.fh.util.RemoveDuplicate;
 import com.fh.util.Tools;
 
 /** 
@@ -57,8 +52,6 @@ public class WebController extends BaseController {
 
 	@Resource(name="leavemsgService")
 	private LeavemsgManager leavemsgService;
-	@Resource(name="newsService")
-	private NewsManager newsService;
 	@Resource(name="statisticsService")
 	private StatisticsManager statisticsService;
 	@Resource(name="blacklistService")
@@ -105,29 +98,6 @@ public class WebController extends BaseController {
 			map.put("result", result);
 			logAfter(logger);
 		}
-		return AppUtil.returnObject(new PageData(), map);
-	}
-	
-	/**获取新闻详情
-	 * @return
-	 */
-	@RequestMapping(value="/getNew")
-	@ResponseBody
-	public Object getNew(){
-		Map<String,Object> map = new HashMap<String,Object>();
-		PageData pd = new PageData();
-		pd = this.getPageData();
-		String result = "00";
-		try{
-			pd.put("NEWS_ID", pd.getString("NEWID"));
-			pd = newsService.findById(pd);	//根据ID读取
-		}catch (Exception e){
-			logger.error(e.toString(), e);
-		}finally{
-			map.put("result", result);
-			logAfter(logger);
-		}
-		map.put("new", pd);
 		return AppUtil.returnObject(new PageData(), map);
 	}
 	
@@ -287,7 +257,11 @@ public class WebController extends BaseController {
 			map.put("result", result);
 			logAfter(logger);
 		}
+		PageData pds = new PageData();
+		Session session = Jurisdiction.getSession();
+		pds = (PageData)session.getAttribute(Const.SESSION_userpds);
 		map.put("data", pd);
+		map.put("pds", pds);
 		return AppUtil.returnObject(new PageData(), map);
 	}
 	/**
@@ -306,7 +280,10 @@ public class WebController extends BaseController {
 		pdC = this.getPageData();
 		page.setPd(pdC);
 		String type = pdC.getString("PUB_TYPE");
-		if(type.equals("zxxx_d")||type.equals("dj")||type.equals("jx")||type.equals("ky")||type.equals("zxxx_s")||type.equals("sz")||type.equals("zxxx")||type.equals("k_zxxx")){
+		if(type.equals("eo02")){
+			page.setShowCount(6);
+			list = contentsService.list(page);
+		}else if(type.equals("djtx")||type.equals("jxky")||type.equals("eo11_eo12")||type.equals("eo11_eo10")||type.equals("eo11_eo16")||type.equals("eo11_eo18")){
 			list = contentsService.list0(page);
 		}else{
 			page.setShowCount(10);

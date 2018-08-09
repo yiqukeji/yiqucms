@@ -70,7 +70,6 @@
 									<th class="center">姓名</th>
 									<th class="center">电话</th>
 									<th class="center">邮箱</th>
-									<th class="center">内容</th>
 									<th class="center">创建时间</th>
 									<th class="center">操作</th>
 								</tr>
@@ -90,7 +89,6 @@
 											<td class='center'>${var.NAME}</td>
 											<td class='center'>${var.TEL}</td>
 											<td class='center'>${var.EMAIL}</td>
-											<td class='center'>${var.CONTEXT}</td>
 											<td class='center'>${var.C_TIME}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">

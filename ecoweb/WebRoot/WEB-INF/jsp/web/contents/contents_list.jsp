@@ -56,7 +56,14 @@
 								<c:if test="${QX.cha == 1 }">
 								<td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs" onclick="tosearch();"  title="检索"><i id="nav-search-icon" class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a></td>
 								</c:if>
-								<c:if test="${QX.toExcel == 1 }"><td style="vertical-align:top;padding-left:2px;"><a class="btn btn-light btn-xs" onclick="toExcel();" title="导出到EXCEL"><i id="nav-search-icon" class="ace-icon fa fa-download bigger-110 nav-search-icon blue"></i></a></td></c:if>
+								<c:if test="${QX.toExcel == 1 }">
+								<td style="vertical-align:top;padding-left:2px;">
+								<a class="btn btn-light btn-xs" onclick="toExcel();" title="导出到EXCEL">
+								<i id="nav-search-icon" class="ace-icon fa fa-download bigger-110 nav-search-icon blue">
+								</i>
+								</a>
+								</td>
+								</c:if>
 							</tr>
 						</table>
 						<!-- 检索  -->
@@ -68,24 +75,20 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
-									<c:if test="${pd.PUB_TYPE =='jsdw'}">
+									<c:if test="${'eo02' == pd.PUB_TYPE||'eo10' == pd.PUB_TYPE}">
 									<th class="center">姓名</th>
 									</c:if>
-									<c:if test="${pd.PUB_TYPE !='jsdw'}">
+									<c:if test="${'eo02'!= pd.PUB_TYPE&&'eo10' != pd.PUB_TYPE}">
 									<th class="center">标题</th>
 									</c:if>
 									<th class="center">发布人</th>
 									<th class="center">创建时间</th>
 									<th class="center">发布时间</th>
 									<th class="center">发布状态</th>
-									<c:if test="${pd.PUB_TYPE !='jsdw'}">
+									<c:if test="${pd.PUB_TYPE !='yqlj'}">
 									<th class="center">是否置顶</th>
 									</c:if>
-									<c:if test="${pd.PUB_TYPE =='jsdw'}">
-									<th class="center">职务</th>
-									<th class="center">排序</th>
-									</c:if>
-									<th class="center">操作</th>
+									<th class="center" >操作</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -113,36 +116,58 @@
 											发布
 											</td>
 											</c:if>
-											<c:if test="${pd.PUB_TYPE!='jsdw'}">
+											<c:if test="${pd.PUB_TYPE!='yqlj'}">
 											<c:if test="${0 == var.PUB_POSITION}">
 											<td class='center'>默认</td>
 										    </c:if>
 										    <c:if test="${1 == var.PUB_POSITION}">
 											<td class='center'>置顶</td>
 										    </c:if>
-										    <c:if test="${2 == var.PUB_POSITION}">
-											<td class='center'>靠前显示</td>
-										    </c:if>
-										    </c:if>
-										    <c:if test="${pd.PUB_TYPE=='jsdw'}">
-										    <td class='center'>${var.DESCRIPTION}</td>
-										    <td class='center'>${var.ORDER0}</td>
 										    </c:if>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
+												<c:if test="${var.ARTICAL_TYPE !=null&&var.PUB_TYPE!=pd.PUB_TYPE}">
 													<c:if test="${QX.edit == 1 }">
-													<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.CONTENTS_ID}','${var.PUB_TYPE}');">
+													<a class="btn btn-xs btn-success" style="background-color:#848e82 !important;" disabled="disabled" title="编辑" onclick="edit('${var.CONTENTS_ID}','${var.PUB_TYPE}');">
 														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
 													</a>
 													</c:if>
 													<c:if test="${QX.del == 1 }">
-													<a class="btn btn-xs btn-danger" onclick="del('${var.CONTENTS_ID}');">
+													<a class="btn btn-xs btn-danger" style="background-color:#848e82 !important;" disabled="disabled" onclick="del('${var.CONTENTS_ID}');">
 														<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
 													</a>
 													</c:if>
+													<c:if test="${QX.toshare == 1 }">
+													<a class="btn btn-xs btn-danger" style="background-color:#848e82 !important;" disabled="disabled"  onclick="toshare('${var.CONTENTS_ID}');">
+														<i class="ace-icon fa fa-share bigger-120" title="文章分享"></i>
+													</a>
+											        </c:if>
+											    </c:if>
+											    
+											    <c:if test="${var.ARTICAL_TYPE ==null|| var.ARTICAL_TYPE ==''||var.PUB_TYPE==pd.PUB_TYPE}">
+													<c:if test="${QX.edit == 1 }">
+													<a class="btn btn-xs btn-success"  title="编辑" onclick="edit('${var.CONTENTS_ID}','${var.PUB_TYPE}');">
+														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
+													</a>
+													</c:if>
+													<c:if test="${QX.del == 1 }">
+													<a class="btn btn-xs btn-danger"  onclick="del('${var.CONTENTS_ID}');">
+														<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
+													</a>
+													</c:if>
+													<c:if test="${QX.toshare == 1 }">
+													<c:if test="${'eo02' != pd.PUB_TYPE}">
+													<a class="btn btn-xs btn-danger"  onclick="toshare('${var.CONTENTS_ID}');">
+														<i class="ace-icon fa fa-share bigger-120" title="文章分享"></i>
+													</a>
+													</c:if>
+											        </c:if>
+											    </c:if>
+											    
+											    
 												</div>
 												<div class="hidden-md hidden-lg">
 													<div class="inline pos-rel">
@@ -335,7 +360,7 @@
 		}
 		
 		//修改
-		function edit(Id,PUB_TYPE,C_STATE){
+		function edit(Id,PUB_TYPE){
 			 top.jzts();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
@@ -354,7 +379,20 @@
 			 };
 			 diag.show();
 		}
-		
+		//文章分享
+		function toshare(Id){
+			 top.jzts();
+			 var diag = new top.Dialog();
+			 diag.Drag = true;
+			 diag.Title = "文章分享";
+			 diag.URL = '<%=basePath%>contents/goShareEdit.do?CONTENTS_ID='+Id;
+			 diag.Width = 320;
+			 diag.Height = 450;
+			 diag.CancelEvent = function(){ //关闭事件
+				diag.close();
+			 };
+			 diag.show();
+		}
 		//批量操作
 		function makeAll(msg){
 			bootbox.confirm(msg, function(result) {

@@ -1,0 +1,64 @@
+@charset "utf-8";
+.child {
+	padding: 0px;
+	margin-top: 60px;
+}
+
+.title_box {
+	width: 90%;
+	height: 66px;
+	background: #054294;
+	text-align: center;
+	line-height: 66px;
+}
+
+.title_box p {
+	font-size: 26px;
+	color: white;
+	border-bottom: 1px solid white;
+	margin-bottom: 0px;
+}
+
+.title_box a {
+	display: block;
+	width: 100%;
+	height: 46px;
+	text-align: center;
+	line-height: 46px;
+	color: black;
+	font-size: 16px;
+	background: #eef3fa;
+}
+
+.title_box a:hover {
+	background: #054294;
+	color: white;
+}
+
+.address {
+	width: 100%;
+	height: auto;
+}
+
+.address p {
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	font-size: 14px;
+	border-bottom: 2px solid gainsboro;
+}
+
+.active {
+	background: #054294 !important;
+	color: white !important;
+}
+
+table{
+	width: 100%;
+}
+
+td{
+	text-align: center;
+	height: 46px;
+	font-size: 14px;
+}

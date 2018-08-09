@@ -46,6 +46,9 @@ public class ContentsService implements ContentsManager{
 	public void edit(PageData pd)throws Exception{
 		dao.update("ContentsMapper.edit", pd);
 	}
+	public void editByType(PageData pd)throws Exception{
+		dao.update("ContentsMapper.editByType", pd);
+	}
 	public void editByCount(PageData pd)throws Exception{
 		dao.update("ContentsMapper.editByCount", pd);
 	}
@@ -62,6 +65,10 @@ public class ContentsService implements ContentsManager{
 	public List<PageData> list0(Page page)throws Exception{
 		return (List<PageData>)dao.findForList("ContentsMapper.datalistPage0", page);
 	}
+	@SuppressWarnings("unchecked")
+	public List<PageData> list1(Page page)throws Exception{
+		return (List<PageData>)dao.findForList("ContentsMapper.datalistPage1", page);
+	}
 	
 	/**列表(全部)
 	 * @param pd
@@ -71,7 +78,10 @@ public class ContentsService implements ContentsManager{
 	public List<PageData> listAll(PageData pd)throws Exception{
 		return (List<PageData>)dao.findForList("ContentsMapper.listAll", pd);
 	}
-	
+	@SuppressWarnings("unchecked")
+	public List<PageData> listByTime(PageData pd)throws Exception{
+		return (List<PageData>)dao.findForList("ContentsMapper.listByTime", pd);
+	}
 	/**通过id获取数据
 	 * @param pd
 	 * @throws Exception
@@ -99,6 +109,9 @@ public class ContentsService implements ContentsManager{
 	@SuppressWarnings("unchecked")
 	public List<PageData> listByType1(PageData pd) throws Exception {
 		return (List<PageData>)dao.findForList("ContentsMapper.listByType1", pd);
+	}
+	public void editRight(PageData pd)throws Exception{
+		dao.update("ContentsMapper.editRight", pd);
 	}
 	
 }

@@ -74,10 +74,6 @@
 								<td><input type="text" name="EMAIL" id="EMAIL" value="${pd.EMAIL}" maxlength="50" placeholder="这里输入邮箱" title="邮箱" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">QQ:</td>
-								<td><input type="text" name="QQ" id="QQ" value="${pd.QQ}" maxlength="20" placeholder="这里输入QQ" title="QQ" style="width:98%;"/></td>
-							</tr>
-							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">邮编:</td>
 								<td><input type="text" name="FAX" id="FAX" value="${pd.FAX}" maxlength="20" placeholder="这里输入传真" title="传真" style="width:98%;"/></td>
 							</tr>

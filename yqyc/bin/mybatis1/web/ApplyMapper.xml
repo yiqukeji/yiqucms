@@ -22,7 +22,8 @@
 		C_TIME,	
 		INSTITUTION,	
 		APPLY_ID,
-		WORK_NAME
+		WORK_NAME,
+		EMAIL
 	</sql>
 	
 	<!-- 字段值 -->
@@ -40,7 +41,8 @@
 		#{C_TIME},	
 		#{INSTITUTION},	
 		#{APPLY_ID},
-		#{WORK_NAME}
+		#{WORK_NAME},
+		#{EMAIL}
 	</sql>
 	
 	<!-- 新增-->
@@ -79,7 +81,8 @@
 			FILESURL = #{FILESURL},
 			C_TIME = #{C_TIME},
 			INSTITUTION = #{INSTITUTION},
-			WORK_NAME=#{WORK_NAME}
+			WORK_NAME=#{WORK_NAME},
+			EMAIL=#{EMAIL}
 		where 
 		APPLY_ID = #{APPLY_ID}
 	</update>

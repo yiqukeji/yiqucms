@@ -15,7 +15,7 @@
 	<!-- jsp文件头和头部 -->
 	<%@ include file="../../system/index/top.jsp"%>
 	<!-- 日期框 -->
-	<link rel="stylesheet" href="static/ace/css/datepicker.css" />
+	<script type="text/javascript" src="fh_static_1/laydate/js/laydate.js"></script>
 </head>
 <body class="no-skin">
 <!-- /section:basics/navbar.layout -->
@@ -33,76 +33,165 @@
 						<input type="hidden" name="PUB_POSITION" id="PUB_POSITION" value="${pd.PUB_POSITION}"/>
 						<input type="hidden" name="C_STATE" id="C_STATE" value="${pd.C_STATE}"/>
 						<input type="hidden" name="PUB_TYPE" id="PUB_TYPE" value="${pd.PUB_TYPE}"/>
+						<input type="hidden" name="NEWS_TYPE" id="NEWS_TYPE" value="${pd.NEWS_TYPE}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
 						<table id="table_report" class="table table-striped table-bordered table-hover">
-			               <c:if test="${pd.PUB_TYPE != 'jsdw'}">
+							<c:if test="${'eo02' == pd.PUB_TYPE||'eo10' == pd.PUB_TYPE||'eo33' == pd.PUB_TYPE||'eo34' == pd.PUB_TYPE||'eo35' == pd.PUB_TYPE||'eo36' == pd.PUB_TYPE}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">标题:</td>
+								<td style="width:75px;text-align: left;padding-top: 13px;">姓名</td>
 								<td><input type="text" name="TITLE" id="TITLE" value="${pd.TITLE}" maxlength="100" placeholder="这里输入标题" title="标题" style="width:98%;"/></td>
-							</tr>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">描述:</td>
-								<td><input type="text" name="DESCRIPTION" id="DESCRIPTION" value="${pd.DESCRIPTION}" maxlength="100" placeholder="这里输入描述" title="描述" style="width:98%;"/></td>
-							</tr>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">发布人:</td>
-								<td><input type="text" name="PUBLISHER" id="PUBLISHER" readonly="readonly" value="${pds.NAME}" maxlength="50" placeholder="这里输入发布人" title="发布人" style="width:98%;"/></td>
-							</tr>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">文章来源:</td>
-								<td><input type="text" name="PUB_SOURCE" id="PUB_SOURCE"  value="${pd.PUB_SOURCE}" maxlength="50" placeholder="这里输入文章来源" title="文章来源" style="width:98%;"/></td>
-							</tr>
-							<tr hidden="hidden">
-								<td style="width:75px;text-align: right;padding-top: 13px;">发布类型:</td>
-								<td><input type="text" name="PUB_TYPE" id="PUB_TYPE" value="${pd.PUB_TYPE}" maxlength="10" placeholder="这里输入发布类型" title="发布类型" style="width:98%;"/></td>
 							</tr>
 							</c:if>
-							<c:if test="${pd.PUB_TYPE == 'jsdw'}">
+							<c:if test="${'eo02' == pd.PUB_TYPE}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">姓名:</td>
+								<td style="width:75px;text-align: left;padding-top: 13px;">描述</td>
+								<td><input type="text" name="DESCRIPTION" id="DESCRIPTION" value="${pd.DESCRIPTION}" maxlength="100" placeholder="这里输入标题" title="标题" style="width:98%;"/></td>
+							</tr>
+							</c:if>
+							<c:if test="${'eo02' != pd.PUB_TYPE&&'eo10' != pd.PUB_TYPE&&'eo33' != pd.PUB_TYPE&&'eo34' != pd.PUB_TYPE&&'eo35' != pd.PUB_TYPE&&'eo36' != pd.PUB_TYPE}">
+							<tr>
+								<td style="width:75px;text-align: left;padding-top: 13px;">标题</td>
 								<td><input type="text" name="TITLE" id="TITLE" value="${pd.TITLE}" maxlength="100" placeholder="这里输入标题" title="标题" style="width:98%;"/></td>
 							</tr>
+							</c:if>
+							<c:if test="${'eo10' == pd.PUB_TYPE||'eo33' == pd.PUB_TYPE||'eo34' == pd.PUB_TYPE}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">职务:</td>
-								<td id="juese">
-											<select class="chosen-select form-control" name="DESCRIPTION" id="DESCRIPTION" data-placeholder="请选择职务" style="vertical-align:top;" style="width:98%;" >
-											<option value=""></option>
-											<c:forEach items="${subList}" var="subList">
-												<option value="${subList.NAME }"  <c:if test="${subList.NAME == pd.DESCRIPTION }">selected</c:if>>${subList.NAME}</option>
-											</c:forEach>
-											</select>
+								<td style="width:75px;text-align: left;padding-top: 13px;">职位</td>
+								<td>
+								<select class="chosen-select form-control" name="JOB" id="JOB" data-placeholder="请选择职位" style="vertical-align:top;" style="width:98%;" >
+								<option value=""></option>
+								<c:forEach items="${subList}" var="var">
+									<option value="${var.NAME}" <c:if test="${var.NAME == pd.JOB }">selected</c:if>>${var.NAME }</option>
+								</c:forEach>
+								</select>
+								</td>
+								
+							</tr>
+						    </c:if>
+						    <c:if test="${'eo36' == pd.PUB_TYPE}">
+							<tr>
+								<td style="width:75px;text-align: left;padding-top: 13px;">行政机构</td>
+								<td>
+								<select class="chosen-select form-control" name="JOB" id="JOB" data-placeholder="请选择行政机构" style="vertical-align:top;" style="width:98%;" >
+								<option value=""></option>
+								<c:forEach items="${subList1}" var="var">
+									<option value="${var.NAME}" <c:if test="${var.NAME == pd.JOB }">selected</c:if>>${var.NAME }</option>
+								</c:forEach>
+								</select>
 								</td>
 							</tr>
+						    </c:if>
+						    <c:if test="${'eo35' == pd.PUB_TYPE}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">发布人:</td>
+								<td style="width:75px;text-align: left;padding-top: 13px;">科研机构</td>
+								<td>
+								<select class="chosen-select form-control" name="JOB" id="JOB" data-placeholder="请选择科研机构" style="vertical-align:top;" style="width:98%;" >
+								<option value=""></option>
+								<c:forEach items="${subList2}" var="var">
+									<option value="${var.NAME}" <c:if test="${var.NAME == pd.JOB }">selected</c:if>>${var.NAME }</option>
+								</c:forEach>
+								</select>
+								</td>
+							</tr>
+						    </c:if>
+							<tr>
+								<td style="width:75px;text-align: left;padding-top: 13px;">发布人</td>
 								<td><input type="text" name="PUBLISHER" id="PUBLISHER" readonly="readonly" value="${pds.NAME}" maxlength="50" placeholder="这里输入发布人" title="发布人" style="width:98%;"/></td>
 							</tr>
+							<c:if test="${pd.C_STATE != 'link'}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">文章来源:</td>
+								<td style="width:75px;text-align: left;padding-top: 13px;">文章来源</td>
 								<td><input type="text" name="PUB_SOURCE" id="PUB_SOURCE"  value="${pd.PUB_SOURCE}" maxlength="50" placeholder="这里输入文章来源" title="文章来源" style="width:98%;"/></td>
 							</tr>
 							</c:if>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">发布时间:</td>
+							<tr hidden="hidden">
+								<td style="width:75px;text-align: left;padding-top: 13px;">发布类型</td>
 								<td>
-								<input class="span10 date-picker" name="PUB_TIME" id="PUB_TIME" value="${pd.PUB_TIME}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="发布时间" title="发布时间" style="width:98%;"/></td>
+								<input type="text" name="PUB_TYPE" id="PUB_TYPE" value="${pd.PUB_TYPE}" maxlength="10" placeholder="这里输入发布类型" title="发布类型" style="width:98%;"/>
+								</td>
 							</tr>
 							
+							<c:if test="${pd.PUB_TYPE == 'tzgg'||pd.PUB_TYPE == 'szyw'||pd.PUB_TYPE == 'szdt'}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">图片:</td>
-								<td><input onmouseover="showTU('THUMNAIL','yulantu1');" onmouseout="hideTU('yulantu1');" type="text" name="THUMNAIL" id="THUMNAIL" value="${pd.THUMNAIL}" maxlength="100" placeholder="这里输入图片" title="图片" style="width:88%;"/>
-									<div class="yulantu" id="yulantu1"></div>
-									<a class="btn btn-xs btn-info" style="margin-top: -5px;" title="选择" onclick="xuanTp('THUMNAIL');">选择 </a>
+								<td style="width:75px;text-align: right;padding-top: 13px;">新闻类型:</td>
+								<c:if test="${type == 0}">
+								<td>
+								<label style="float:left;padding-left: 8px;padding-top:7px;">
+										<input name="form-field-radio10" type="radio" class="ace" id="form-field-radio10" checked="checked" onclick="setType('5',0);"/>
+										<span class="lbl">默认</span>
+								</label>
+								<label style="float:left;padding-left: 8px;padding-top:7px;">
+										<input name="form-field-radio10" type="radio" class="ace" id="form-field-radio11"  onclick="setType('6',1);"/>
+										<span class="lbl">图片新闻 </span>
+								</label>
 								</td>
+							    </c:if>
+							    <c:if test="${type != 0}">
+								<td>
+								<label style="float:left;padding-left: 8px;padding-top:7px;">
+										<input name="form-field-radio10" type="radio" class="ace" id="form-field-radio10" <c:if test="${pd.NEWS_TYPE == 0 }">checked="checked"</c:if> onclick="setType('5',0);"/>
+										<span class="lbl">默认</span>
+								</label>
+								<label style="float:left;padding-left: 8px;padding-top:7px;">
+										<input name="form-field-radio10" type="radio" class="ace" id="form-field-radio11" <c:if test="${pd.NEWS_TYPE == 1 }">checked="checked"</c:if> onclick="setType('6',1);"/>
+										<span class="lbl">图片新闻 </span>
+								</label>
+								</td>
+							    </c:if>
+							</tr>
+							</c:if>
+							
+							<tr>
+								<td style="width:75px;text-align: left;padding-top: 13px;">添缩略图</td>
+								<c:if test="${type != 0}">
+								<td>
+								<label style="float:left;padding-left: 8px;padding-top:7px;">
+										<input name="form-field-radio8" type="radio" class="ace" id="form-field-radio8" <c:if test="${pd.THUMNAIL == null||pd.THUMNAIL == ''}">checked="checked"</c:if> onclick="setType('3',0);"/>
+										<span class="lbl">否</span>
+									</label>
+								<label style="float:left;padding-left: 5px;padding-top:7px;">
+									<input name="form-field-radio9" type="radio" class="ace" id="form-field-radio9" <c:if test="${pd.THUMNAIL != ''}">checked="checked"</c:if> onclick="setType('4',1);"/>
+									<span class="lbl">是</span>
+								</label>
+								<label style="float:left;padding-left: 8px;padding-top:7px;">
+								<span class="lbl">（假如需要发布新闻至新闻图片需要上传缩略图）</span>
+								</label>
+								<div class="active" <c:if test="${pd.THUMNAIL != ''||pd.THUMNAIL != null }"></c:if><c:if test="${pd.THUMNAIL == ''||pd.THUMNAIL == null }">hidden="hidden"</c:if>>
+								<input  type="text" name="THUMNAIL" id="THUMNAIL"  value="${pd.THUMNAIL}" maxlength="100" placeholder="这里输入图片" title="缩略图片" style="width:88%;"/>
+									<a class="btn btn-xs btn-info" style="margin-top: -5px;" title="选择" onclick="xuanTp('THUMNAIL');">选择 </a>
+								</div>
+								</td>
+								</c:if>
+								<c:if test="${type == 0}">
+								<td>
+								<label style="float:left;padding-left: 8px;padding-top:7px;">
+										<input name="form-field-radio8" type="radio" class="ace" id="form-field-radio8" checked="checked"  onclick="setType('3',0);"/>
+										<span class="lbl">否</span>
+									</label>
+								<label style="float:left;padding-left: 5px;padding-top:7px;">
+									<input name="form-field-radio9" type="radio" class="ace" id="form-field-radio9"  onclick="setType('4',1);"/>
+									<span class="lbl">是</span>
+								</label>
+								<label style="float:left;padding-left: 8px;padding-top:7px;">
+								<span class="lbl">（假如需要发布新闻至新闻图片需要上传缩略图）</span>
+								</label>
+								<div class="active" <c:if test="${pd.THUMNAIL != ''||pd.THUMNAIL != null }"></c:if><c:if test="${pd.THUMNAIL == ''||pd.THUMNAIL == null }">hidden="hidden"</c:if>>
+								<input  type="text" name="THUMNAIL" id="THUMNAIL"  value="${pd.THUMNAIL}" maxlength="100" placeholder="这里输入图片" title="缩略图片" style="width:88%;"/>
+									<a class="btn btn-xs btn-info" style="margin-top: -5px;" title="选择" onclick="xuanTp('THUMNAIL');">选择 </a>
+								</div>
+								</td>
+								</c:if>
+								
+								
 							</tr>
 							<c:if test="${pd.C_STATE == 'link'}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">链接:</td>
+								<td style="width:75px;text-align: left;padding-top: 13px;">链接</td>
 								<td><input type="text" name="PUB_LINK" id="PUB_LINK" value="${pd.PUB_LINK}" maxlength="100" placeholder="链接" title="链接" style="width:98%;"/></td>
 							</tr>
 							</c:if>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">发布状态:</td>
+								<td style="width:75px;text-align: left;padding-top: 13px;">发布状态</td>
 								<td>
 								<label style="float:left;padding-left: 8px;padding-top:7px;">
 										<input name="form-field-radio3" type="radio" class="ace" id="form-field-radio4" <c:if test="${pd.PUB_STATE == 0 }">checked="checked"</c:if> onclick="setType('1',0);"/>
@@ -117,9 +206,9 @@
 								</label>
 								</td>
 							</tr>
-							<c:if test="${pd.PUB_TYPE != 'jsdw'}">
+							<c:if test="${pd.C_STATE != 'link'}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">新闻位置:</td>
+								<td style="width:75px;text-align: left;padding-top: 13px;">新闻位置</td>
 								<td>
 								<label style="float:left;padding-left: 8px;padding-top:7px;">
 										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio6" <c:if test="${pd.PUB_POSITION == 0 }">checked="checked"</c:if> onclick="setType('2',0);"/>
@@ -134,19 +223,17 @@
 								</label>
 								</td>
 							</tr>
-							</c:if>
-							<c:if test="${pd.PUB_TYPE == 'jsdw'}">
-				            <tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">人物序号:</td>
-								<td>
-									<input type="number" style="width:98%;" name="ORDER0" id="menuOrder" value="${pd.ORDER0}" placeholder="这里输入人物排序序号" title="请输入正整数" class="col-xs-10 col-sm-5" />
-								</td>
-							</div>
-							</tr>
-							</c:if>
-							<c:if test="${pd.C_STATE != 'link'}">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">发布内容:</td>
+								<td style="width:75px;text-align: left;padding-top: 13px;">发布时间</td>
+								<td>
+	                            <div class="demo2">
+					                <input placeholder="请输入日期" name="PUB_TIME"  value="${pd.PUB_TIME}" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+					            </div>
+	                             
+								</td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: left;padding-top: 13px;">发布内容</td>
 								<td>
 								 <textarea id="editor_id" name="CONTENT" style="width:700px;height:300px;">
                                  ${pd.CONTENT}
@@ -175,7 +262,6 @@
 	<!-- /.main-content -->
 </div>
 <!-- /.main-container -->
-
 
 	<!-- 页面底部js¨ -->
 	<%@ include file="../../system/index/foot.jsp"%>
@@ -233,7 +319,7 @@
 				$("#PUB_STATE").focus();
 			return false;
 			}
-			if($("#PUB_POSITION").val()==""&&$("#PUB_TYPE").val()!="jsdw"){
+			if($("#PUB_POSITION").val()==""&&$("#C_STATE").val()!="link"){
 				$("#PUB_POSITION").tips({
 					side:3,
 		            msg:'请输入新闻位置',
@@ -247,11 +333,6 @@
 			$("#zhongxin").hide();
 			$("#zhongxin2").show();
 		}
-		
-		$(function() {
-			//日期框
-			$('.date-picker').datepicker({autoclose: true,todayHighlight: true});
-		});
 		//富文本编辑器
 	       KindEditor.ready(function(K) {
 	    	   K.create('textarea[name="CONTENT"]', {
@@ -291,15 +372,31 @@
 			function hideTU(TPID){
 				 $("#"+TPID).hide();
 			}
-			
+			$(function(){
+			    
+			});
 			//设置菜单类型or状态
 			function setType(type,value){
 				if(type == '1'){
 					$("#PUB_STATE").val(value);
 				}else if(type == '2'){
 					$("#PUB_POSITION").val(value);
+				}else if(type == '4'){
+					$("#form-field-radio8").prop("checked","");
+					$("#THUMNAIL").val("");
+					$(".active").removeAttr("hidden");
+				}else if(type == '3'){
+					$("#form-field-radio9").prop("checked","");
+					$("#THUMNAIL").val("");
+					$(".active").prop("hidden",true);
+				}else if(type == '5'){
+					$("#NEWS_TYPE").val(value);
+				}else if(type == '6'){
+					$("#NEWS_TYPE").val(value);
 				}
+				
 			}
 		</script>
+		<script type="text/javascript" src="fh_static_1/laydate/js/test.js"></script>
 </body>
 </html>

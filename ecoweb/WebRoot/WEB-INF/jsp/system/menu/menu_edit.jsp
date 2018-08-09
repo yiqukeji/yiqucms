@@ -85,7 +85,12 @@
 									<input type="number" name="MENU_ORDER" id="menuOrder" value="${pd.MENU_ORDER}" placeholder="这里输入菜单序号" title="请输入正整数" class="col-xs-10 col-sm-5" />
 								</div>
 							</div>
-							
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 菜单标识  :</label>
+								<div class="col-sm-9">
+									<input type="text" name="IDENTIFICATION" id="IDENTIFICATION" value="${pd.IDENTIFICATION }" placeholder="这里输入菜单标识（二级菜单中的链接类型相对应）" class="col-xs-10 col-sm-5" />
+								</div>
+							</div>
 							<c:if test="${'0' == MENU_ID}">
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 类型 : </label>
@@ -115,88 +120,6 @@
 									</label>
 								</div>
 							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 网站标识  :</label>
-								<div class="col-sm-9">
-									<input type="text" name="IDENTIFICATION" id="IDENTIFICATION" value="${pd.IDENTIFICATION }" placeholder="这里输入网站标识（必须以web开头）" class="col-xs-10 col-sm-5" />
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 栏目图片  :</label>
-								<div class="col-sm-9">
-									<input onmouseover="showTU('COLUMN_IMG','yulantu1');" onmouseout="hideTU('yulantu1');" type="text" name="COLUMN_IMG" id="COLUMN_IMG" value="${pd.COLUMN_IMG}" maxlength="100" placeholder="这里输入图片" title="图片" style="width:88%;"/>
-									<div class="yulantu" id="yulantu1"></div>
-									<a class="btn btn-xs btn-info" style="margin-top: -5px;" title="选择" onclick="xuanTp('COLUMN_IMG');">选择 </a>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 导航状态 : </label>
-								<div class="col-sm-9">
-									<label style="float:left;padding-left: 8px;padding-top:7px;">
-										<input name="form-field-radio3" type="radio" class="ace" id="form-field-radio5" <c:if test="${pd.NAV_STATE == 1 }">checked="checked"</c:if> onclick="setType('3',1);"/>
-										<span class="lbl"> 显示</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio3" type="radio" class="ace" id="form-field-radio6" <c:if test="${pd.NAV_STATE == 0 }">checked="checked"</c:if> onclick="setType('3',0);"/>
-										<span class="lbl"> 隐藏</span>
-									</label>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 首页显示 : </label>
-								<div class="col-sm-9">
-									<label style="float:left;padding-left: 8px;padding-top:7px;">
-										<input name="form-field-radio5" type="radio" class="ace" id="form-field-radio7" <c:if test="${pd.F_STATE == 1 }">checked="checked"</c:if> onclick="setType('5',1);"/>
-										<span class="lbl"> 显示</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio5" type="radio" class="ace" id="form-field-radio8" <c:if test="${pd.F_STATE == 0 }">checked="checked"</c:if> onclick="setType('5',0);"/>
-										<span class="lbl"> 隐藏</span>
-									</label>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 显示位置 : </label>
-								<div class="col-sm-9">
-								<label style="float:left;padding-left: 8px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio7" <c:if test="${pd.POSITION_STATE == 0 }">checked="checked"</c:if> onclick="setType('4',0);"/>
-										<span class="lbl">默认</span>
-									</label>
-									<label style="float:left;padding-left: 8px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio8" <c:if test="${pd.POSITION_STATE == 1 }">checked="checked"</c:if> onclick="setType('4',1);"/>
-										<span class="lbl">中左</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio9" <c:if test="${pd.POSITION_STATE == 2 }">checked="checked"</c:if> onclick="setType('4',2);"/>
-										<span class="lbl">中右</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio10" <c:if test="${pd.POSITION_STATE == 3 }">checked="checked"</c:if> onclick="setType('4',3);"/>
-										<span class="lbl">下左</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio11" <c:if test="${pd.POSITION_STATE == 4 }">checked="checked"</c:if> onclick="setType('4',4);"/>
-										<span class="lbl">下右</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio13" <c:if test="${pd.POSITION_STATE == 5 }">checked="checked"</c:if> onclick="setType('4',5);"/>
-										<span class="lbl">底上</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio13" <c:if test="${pd.POSITION_STATE == 8 }">checked="checked"</c:if> onclick="setType('4',8);"/>
-										<span class="lbl">底中</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio14" <c:if test="${pd.POSITION_STATE == 6 }">checked="checked"</c:if> onclick="setType('4',6);"/>
-										<span class="lbl">底下</span>
-									</label>
-									<label style="float:left;padding-left: 5px;padding-top:7px;">
-										<input name="form-field-radio4" type="radio" class="ace" id="form-field-radio12" <c:if test="${pd.POSITION_STATE == 7 }">checked="checked"</c:if> onclick="setType('4',7);"/>
-										<span class="lbl">列表</span>
-									</label>
-								</div>
-							</div>
-							
 							<div class="clearfix form-actions">
 								<div class="col-md-offset-3 col-md-9">
 									<a class="btn btn-mini btn-primary" onclick="save();">保存</a>
@@ -205,7 +128,6 @@
 							</div>
 							<div class="hr hr-18 dotted hr-double"></div>
 						</form>
-
 						</div>
 						<!-- /.col -->
 					</div>

@@ -1,0 +1,620 @@
+@charset "utf-8";
+.content {
+	padding: 60px 0 0;
+	background: #f8f8f8;
+}
+
+.content:after {
+	content: "";
+	width: 0;
+	height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+	zoom: 1;
+}
+
+.cont-menu {
+	width: 220px;
+	float: left;
+}
+
+.cont-menu-title {
+	width: 220px;
+	height: 60px;
+	background: #054294;
+	color: white;
+	text-align: center;
+	line-height: 60px;
+	font-size: 28px;
+	border-bottom: 1px solid #ccc;
+}
+
+.cont-menu-title1 {
+	width: 220px;
+	height: 45px;
+}
+
+.cont-menu-title1 a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: black;
+	background: #eef3fa;
+	text-align: center;
+	line-height: 45px;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.active{
+	background: #054294 !important;
+	color: white !important;
+}
+
+.cont-menu-title1 a:hover{
+	background: #054294;
+	color: white;
+}
+
+.cont-menu-title2 {
+	background: #054294;
+	color: white;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 1px solid #ccc;
+	padding: 5px 0;
+}
+
+.cont-menu ul {}
+
+.cont-menu ul li {
+	width: 220px;
+	height: 45px;
+	background: #eef3fa;
+	text-align: center;
+	line-height: 45px;
+}
+
+.cont-menu ul li a {
+	width: 220px;
+	height: 45px;
+	background: #eef3fa;
+	text-align: center;
+	line-height: 45px;
+	font-size: 14px;
+	display: block;
+}
+
+.cont-menu ul li a:hover {
+	color: white;
+	background: #054294;
+}
+
+.ons a {
+	color: white;
+	background: #054294 !important;
+	display: block;
+}
+
+.cont-right {
+	width: 900px;
+	float: right;
+	min-height: 625px;
+}
+
+.location {
+	color: #333333;
+	border-bottom: 1px solid #cccccc;
+}
+
+.location p {
+	padding: 0 0 6px;
+}
+
+
+
+.article-details {
+	padding: 10px 0;
+}
+
+.details-title {
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 1;
+	text-align: center;
+	padding: 20px 0 0;
+}
+
+.wenzhang_time {
+	text-align: center;
+	font-size: 12px;
+	padding: 15px 0;
+}
+
+.wenzhang_time span {
+	margin: 0 3px;
+}
+
+.wenzhang_time b {
+	margin: 0 5px;
+}
+
+
+/*box*/
+
+.boxs {
+	font-size: 14px
+}
+
+.boxs:after {
+	content: "";
+	width: 0;
+	height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+	zoom: 1;
+}
+
+.boxs ul {}
+
+.boxs ul:after {
+	content: "";
+	width: 0;
+	height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+	zoom: 1;
+}
+
+.boxs ul li {
+	float: left;
+	height: 210px;
+	border: 1px solid #054294;
+	margin: 15px 0 0 14px
+}
+
+.boxs ul li:after {
+	content: "";
+	width: 0;
+	height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+	zoom: 1;
+}
+
+.zhiwei {
+	height: 30px;
+	line-height: 30px;
+	background: #F7F7F7;
+	color: black;
+	font-size: 14px;
+	position: relative;
+	padding-left: 30px
+}
+
+.zhiwei span {
+	position: absolute;
+	width: 10px;
+	height: 100%;
+	background: #054294;
+	top: 0;
+	left: 0
+}
+
+.pic {
+	float: left;
+	height: 160px;
+	width: 120px;
+	margin-top: 10px;
+	background: #dcd9d4;
+}
+
+.pic img {
+	width: 110px;
+	height: 150px;
+	margin: 5px
+}
+
+.text {
+	float: left;
+	height: 160px;
+	width: 150px;
+	margin: 10px 0 0 10px;
+}
+
+.tx-nr {
+	height: 140px;
+	width: 145px;
+	font-size: 12px;
+	font-family: "闆呴粦";
+	line-height: 24px;
+}
+
+.text-name {
+	font-weight: bold;
+	font-size: 14px
+}
+
+.text-quanli {
+	text-indent: 24px
+}
+
+.genduo {
+	height: 20px;
+	width: 70px;
+	color: #a31715;
+	font-size: 12px;
+	line-height: 20px;
+	float: right;
+}
+
+.genduo img {
+	margin: 0 5px
+}
+
+.jigou-title {
+	text-align: center;
+	line-height: 40px;
+	border-bottom: 1px dashed #cccccc;
+	font-size: 24px;
+}
+
+.wenzhang {
+	border: 1px solid #cccccc;
+	padding: 20px
+}
+
+.wenzhang-title {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px dashed #cccccc;
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: 5px
+}
+
+.wenzhang-info {
+	margin: 5px 0;
+}
+
+.juli {
+	width: 15px;
+	display: inline-block
+}
+
+.wenzhang-info p {
+	text-align: center;
+}
+
+.wenzhang-neirong {
+	padding: 20px;
+}
+
+.pic1 {
+	height: 178px;
+	width: 140px;
+	margin-top: 10px;
+	background: #dcd9d4;
+	float: left;
+}
+
+.pic1 img {
+	margin: 5px
+}
+
+.text1 {
+	height: auto;
+    width: 740px;
+	margin: 10px 0 0 10px;
+	float: left;
+	font-size: 14px;
+	font-family: "闆呴粦";
+	line-height: 24px;
+}
+
+.text1>.text-name1 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+
+/*box*/
+
+
+/*list*/
+
+.list {}
+
+.list-ul {
+	margin-top: 10px;
+}
+
+.list-ul li {
+	height: 45px;
+	line-height: 45px;
+	border-bottom: 1px dashed #cccccc;
+}
+
+.list-ul li a {
+	font-size: 14px;
+	float: left;
+	width: 800px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.list-ul li span {
+	float: right;
+	color: #666;
+	font-size: 12px;
+}
+
+
+/*list*/
+
+
+
+.teach-div {
+	margin: 10px 0;
+}
+
+.teach-title {
+	background: #054294;
+	text-align: center;
+	color: white;
+	height: 35px;
+	line-height: 35px;
+	font-weight: bold;
+}
+
+.teach-content {}
+
+.teach-content ul {
+	border: 1px solid #a98e8e;
+	border-left: none;
+	box-sizing: border-box;
+}
+
+.teach-content ul:after {
+	content: "";
+	width: 0;
+	height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+	zoom: 1;
+}
+
+.teach-content ul li:last-child {
+	border-right: 1px solid #a98e8e;
+	box-sizing: border-box;
+	width: 181px;
+}
+
+.teach-content ul li {
+	width: 20%;
+	height: 60px;
+	line-height: 60px;
+	float: left;
+	text-align: center;
+	box-sizing: border-box;
+	border-bottom: 1px solid #a98e8e;
+	border-left: 1px solid #a98e8e;
+}
+
+
+.teatch-detail {
+	padding: 15px 0;
+}
+
+.teatch-detail .detail-title {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.teatch-detail .detail-info {
+	text-align: center;
+	font-size: 12px;
+}
+
+.teatch-detail .detail-context {
+	text-indent: 21pt;
+	line-height: 200%;
+	margin: 10px 0;
+}
+
+
+.page_div {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: 15px;
+	font-family: "microsoft yahei";
+	color: #666666;
+	margin-right: 10px;
+	padding-left: 20px;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+
+.page_div a {
+	min-width: 30px;
+	height: 28px;
+	border: 1px solid #dce0e0!important;
+	text-align: center;
+	margin: 0 4px;
+	cursor: pointer;
+	line-height: 28px;
+	color: #666666;
+	font-size: 13px;
+	display: inline-block;
+}
+
+#firstPage,
+#lastPage {
+	width: 50px;
+	color: #0073A9;
+	border: 1px solid #0073A9!important;
+}
+
+#prePage,
+#nextPage {
+	width: 70px;
+	color: #0073A9;
+	border: 1px solid #0073A9!important;
+}
+
+.page_div .current {
+	background-color: #0073A9;
+	border-color: #0073A9;
+	color: #FFFFFF;
+}
+
+.totalPages {
+	margin: 0 10px;
+}
+
+.totalPages span,
+.totalSize span {
+	color: #0073A9;
+	margin: 0 5px;
+}
+
+
+/*鍒嗛〉鎻掍欢鏍峰紡*/
+
+
+
+.email {
+	border: 1px solid #cccccc;
+	padding: 20px;
+}
+
+.email-title {
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-bottom: 1px dashed #ccc;
+	margin-bottom: 20px;
+	font-size: 16px
+}
+
+.form-div {
+	margin: 0 auto;
+	box-shadow: 0 0 5px #cccccc;
+	padding: 20px;
+}
+
+.form-div div {
+	margin: 10px
+}
+
+.form-div label {
+	float: left;
+	line-height: 30px
+}
+
+.form-div div input {
+	height: 30px;
+	padding-left: 15px;
+	margin-left: 15px;
+}
+
+.form-div div textarea {
+	padding: 15px;
+	margin-left: 15px;
+	width: 80%;
+	height: 200px;
+	font-size: 16px;
+	overflow-y: scroll;
+}
+
+.form-div div input[type='submit'] {
+	margin: 10px auto;
+	border: none;
+	background: #0073A9;
+	color: white;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	padding: 0;
+	cursor: pointer;
+	letter-spacing: 2px
+}
+
+.form-div div input[type='submit']:hover {
+	background: #0073A9;
+	color: white;
+}
+
+
+.videos{
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.video_box{
+	width: 100%;
+	height: auto;
+}
+
+.text_dateils{
+	width: 100%;
+	height: auto;
+	padding: 20px 0px;
+	box-sizing: border-box;
+}
+
+.text_dateils p{
+	text-indent: 32px;
+	text-align: justify !important;
+	line-height: 25px;
+	text-justify:inter-ideograph;
+    -moz-text-align-last: justify ;
+    -webkit-text-align-last:justify;
+}
+
+
+
+@media only screen and (min-width: 320px) and (max-width: 640px) {
+	.cont-menu {
+		width: 100%;
+		margin: 10px 0;
+	}
+	.cont-right {
+		width: 100%;
+		margin: 10px auto;
+	}
+	.list-ul li a {
+		width: 77%;
+		padding-left: 1%;
+	}
+	.page_div {
+		margin: 10px 0;
+	}
+	.page_div a {
+		margin-top: 10px;
+	}
+	.teach-content ul li:last-child {
+		width: 20.2%;
+		height: 60px;
+		line-height: 60px;
+		float: left;
+		text-align: center;
+		box-sizing: border-box;
+		border-bottom: 1px solid #a98e8e;
+		border-left: 1px solid #a98e8e;
+	}
+	.teatch-detail .detail-context {
+		width: 94%;
+		margin: 20px auto;
+	}
+}

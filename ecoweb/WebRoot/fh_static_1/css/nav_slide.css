@@ -1,0 +1,160 @@
+@charset "utf-8";
+#bannerSlide {
+	height: 360px;
+	position: relative;
+	overflow: hidden;
+	zoom: 1;
+	z-index: 0;
+	min-width: 1200px;
+}
+
+.clearfix:before,
+.clearfix:after {
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	font-size: 0;
+	line-height: 0;
+	width: 0;
+	height: 0;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+.icon-arrow-a-left,
+.icon-arrow-a-right {
+	background: url(../img/icon1.png) no-repeat;
+}
+
+.icon-arrow-a-left {
+	background-position: 0 0;
+	height: 50px;
+	width: 50px;
+}
+
+.icon-arrow-a-left:hover,
+.icon-arrow-a-left.arrow-a-left_hover,
+.icon-arrow-a-left.arrow-a-left-hover {
+	background-position: -60px 0;
+}
+
+.icon-arrow-a-right {
+	background-position: -120px 0;
+	height: 50px;
+	width: 50px;
+}
+
+.icon-arrow-a-right:hover,
+.icon-arrow-a-right.arrow-a-right_hover,
+.icon-arrow-a-right.arrow-a-right-hover {
+	background-position: -180px 0;
+}
+
+#index_b_hero {
+	width: 1200px;
+	height: 360px;
+	margin: auto;
+	position: relative;
+}
+
+#index_b_hero img {
+	width: 1200px;
+	height: 360px;
+}
+
+#index_b_hero .heros {
+	width: 1200px;
+	height: 360px;
+}
+
+#index_b_hero .hero-wrap {
+	overflow: visible;
+	position: absolute;
+}
+
+#index_b_hero .next,
+#index_b_hero .prev {
+	filter: alpha(Opacity=70);
+	opacity: .7;
+	position: absolute;
+	top: 50%;
+	margin-top: -25px;
+	background-color: #303030;
+	z-index: 3;
+	cursor: pointer;
+}
+
+#index_b_hero .next:hover,
+#index_b_hero .prev:hover {
+	background-color: orangered;
+}
+
+#index_b_hero .next {
+	margin: -25px 0 0 0;
+	right: 0;
+}
+
+#index_b_hero .disabled {
+	background-color: #000;
+}
+
+#index_b_hero .mask-left,
+#index_b_hero .mask-right,
+#index_b_hero .hero {
+	background: #000;
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1200px;
+	height: 360px;
+	overflow: hidden;
+	left: 2400px;
+}
+
+#index_b_hero .mask-right,
+#index_b_hero .mask-left {
+	z-index: 4;
+	left: -1200px;
+	filter: alpha(Opacity=70);
+	opacity: .7;
+	background: #000;
+	overflow: hidden;
+}
+
+#index_b_hero .mask-right {
+	left: 1200px;
+}
+
+#index_b_hero .active {
+	z-index: 2;
+	left: 0;
+}
+
+#bannerSlide .text {
+	position: absolute!important;
+	z-index: 9999999 !important;
+	top: 310px;
+	left: 100px !important;
+	text-align: left;
+	height: 33px;
+	font-size: 14px;
+	font-weight: bolder;
+	color: #fff;
+	background: url(../img/title_bg.png) repeat-x;
+	float: left;
+	line-height: 33px;
+	padding: 0 20px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 640px) {
+	#bannerSlide {
+		display: none
+	}
+}

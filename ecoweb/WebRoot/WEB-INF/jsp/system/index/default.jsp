@@ -119,10 +119,12 @@ setTimeout("top.hangge()",500);
 		//生成首页
 		function proHome(){
 			top.jzts();
+			var typeArr = new Array(); 
+			getCommon(typeArr);
 			$.ajax({
 				type: "POST",
 				url: '<%=basePath%>createHtml/proHome.do',
-		    	data: {tm:new Date().getTime()},
+		    	data: {tm:new Date().getTime(),typeArr:typeArr},
 				dataType:'json',
 				cache: false,
 				success: function(data){
@@ -139,120 +141,24 @@ setTimeout("top.hangge()",500);
 			});
 		}
 		
-		//生成合作共赢页面
-		function proCooperation(){
-			top.jzts();
-			$.ajax({
-				type: "POST",
-				url: '<%=basePath%>createHtml/proCooperation.do',
-		    	data: {tm:new Date().getTime()},
-				dataType:'json',
-				cache: false,
-				success: function(data){
-					 if("success" == data.result){
-						$("#proCooperation").tips({
-							side:3,
-				            msg:'生成完毕',
-				            bg:'#AE81FF',
-				            time:5
-				        });
-					 }
-					top.hangge();
-				}
-			});
-		}
+	//公共栏目入口
+	function getCommon(typeArr){
+		typeArr.push("eo23");//学院新闻
+		typeArr.push("eo24");//通知公告
+		typeArr.push("eo01");//学院简介
+		typeArr.push("eo03");//组织机构
+		typeArr.push("eo02");//部门领导
+		typeArr.push("djtx");//党建团学
+		typeArr.push("jxky");//教学科研
+		typeArr.push("eo10");//师之队伍
+		typeArr.push("eo33");//师之队伍
+		typeArr.push("eo34");//师之队伍
+		typeArr.push("eo35");//师之队伍-科研机构
+		typeArr.push("eo36");//师之队伍-行政机构
+		typeArr.push("eo37");//党建学团
+		typeArr.push("eo38");//教学科研
 		
-		//生成关于我们页面
-		function proAboutus(){
-			top.jzts();
-			$.ajax({
-				type: "POST",
-				url: '<%=basePath%>createHtml/proAboutus.do',
-		    	data: {tm:new Date().getTime()},
-				dataType:'json',
-				cache: false,
-				success: function(data){
-					 if("success" == data.result){
-						$("#proAboutus").tips({
-							side:3,
-				            msg:'生成完毕',
-				            bg:'#AE81FF',
-				            time:5
-				        });
-					 }
-					top.hangge();
-				}
-			});
-		}
-		
-		//生成产品案例页面
-		function proProduct(){
-			top.jzts();
-			$.ajax({
-				type: "POST",
-				url: '<%=basePath%>createHtml/proProduct.do',
-		    	data: {tm:new Date().getTime()},
-				dataType:'json',
-				cache: false,
-				success: function(data){
-					 if("success" == data.result){
-						$("#proProduct").tips({
-							side:3,
-				            msg:'生成完毕',
-				            bg:'#AE81FF',
-				            time:5
-				        });
-					 }
-					top.hangge();
-				}
-			});
-		}
-		
-		//生成新闻动态页面
-		function proNews(){
-			top.jzts();
-			$.ajax({
-				type: "POST",
-				url: '<%=basePath%>createHtml/proNews.do',
-		    	data: {tm:new Date().getTime()},
-				dataType:'json',
-				cache: false,
-				success: function(data){
-					 if("success" == data.result){
-						$("#proNews").tips({
-							side:3,
-				            msg:'生成完毕',
-				            bg:'#AE81FF',
-				            time:5
-				        });
-					 }
-					top.hangge();
-				}
-			});
-		}
-		
-		//生成联系我们页面
-		function proContactus(){
-			top.jzts();
-			$.ajax({
-				type: "POST",
-				url: '<%=basePath%>createHtml/proContactus.do',
-		    	data: {tm:new Date().getTime()},
-				dataType:'json',
-				cache: false,
-				success: function(data){
-					 if("success" == data.result){
-						$("#proContactus").tips({
-							side:3,
-				            msg:'生成完毕',
-				            bg:'#AE81FF',
-				            time:5
-				        });
-					 }
-					top.hangge();
-				}
-			});
-		}
+	}
 	</script>
 </body>
 </html>
