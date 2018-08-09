@@ -1,0 +1,85 @@
+/*列表*/
+.location{width: 1150px;height: 66px;line-height: 66px;background: url(../imgs/n-head.png);padding: 0 25px;margin: 0 auto;}
+.location:after{content: "";width: 0;height: 0;display: block;visibility: hidden;clear: both;zoom: 1;}
+.location-left{float: left;color: #fff;font-weight: bold;font-size: 20px;text-align: left;}
+.location-right{float: right;color: #fff;}
+.location-right p a{color: white}
+.location-right p a:hover{color: #ffff00;}
+
+.list-list{}
+.list-list:after{content: "";width: 0;height: 0;display: block;visibility: hidden;clear: both;zoom: 1;}
+/*列表左侧导航栏*/
+.list-menu{margin-top: 36px;width: 220px;background: #eef3fa;float: left}
+.list-menu li a{color: #565656;font-size: 14px;display: block;padding-left: 27px;height: 60px;line-height: 60px;}
+/*列表右侧列表详情*/
+.list-detail{float: right;width: 900px;margin-top: 18px;}
+.list-detail ul li{float: left;padding: 14px 25px 14px 25px;width: 850px;background-color: #f2f2f2;margin-top: 18px;}
+.date{float: left;width: 80px;height: 80px;background-color: #c0c0c0;text-align: center;color: #fff;margin-top: 6px;}
+.day{float: left;width: 80px;height: 50px;line-height: 50px;font-size: 36px;font-weight: bold;background-color: #ececec;color: #999;}
+.month{float: left;width: 80px;height: 30px;line-height: 30px;}
+
+.list-detail ul:after{content: "";width: 0;height: 0;display: block;visibility: hidden;clear: both;zoom: 1;}
+.list-detail ul li dl{float: right;width: 735px;padding-bottom: 15px;overflow: hidden;}
+.list-detail ul li dl dt {float: left;width: 735px;padding-bottom: 15px;overflow: hidden;border-bottom: #d8d8d8 1px solid;}
+.list-detail ul li dl dd {float: left;width: 735px;height: 48px;line-height: 24px;color: #666;overflow: hidden;margin-top: 8px;}
+
+.active{background: #054294}
+.active a{color: white !important;}
+
+/*分页插件样式*/
+.page_div {
+    margin: 30px 0;
+    font-size: 15px;
+    color: #666666;
+    padding-left: 20px;
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+}
+/*
+ * 页数按钮样式
+ */
+
+.page_div a {
+    min-width: 30px;
+    height: 28px;
+    border: 1px solid #dce0e0!important;
+    text-align: center;
+    margin: 0 4px;
+    cursor: pointer;
+    line-height: 28px;
+    color: #666666;
+    font-size: 13px;
+    display: inline-block;
+}
+
+#firstPage,
+#lastPage {
+    width: 50px;
+    color: #0073A9;
+    border: 1px solid #0073A9!important;
+}
+
+#prePage,
+#nextPage {
+    width: 70px;
+    color: #0073A9;
+    border: 1px solid #0073A9!important;
+}
+
+.page_div .current {
+    background-color: #0073A9;
+    border-color: #0073A9;
+    color: #FFFFFF;
+}
+
+.totalPages {
+    margin: 0 10px;
+}
+
+.totalPages span,
+.totalSize span {
+    color: #0073A9;
+    margin: 0 5px;
+}
+/*分页插件样式*/
