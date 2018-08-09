@@ -97,6 +97,9 @@
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
 													<c:if test="${QX.edit == 1 }">
+													<a class="btn btn-xs btn-info" title='发送电子邮件' onclick="sendEmail('${var.EMAIL}');">
+														<i class="ace-icon fa fa-envelope-o bigger-120" title="发送电子邮件"></i>
+													</a>
 													<a class="btn btn-xs btn-success"  title="查看" onclick="edit('${var.APPLY_ID}');">
 														<i class="ace-icon fa fa-search bigger-120" title="查看"></i>
 													</a>
@@ -358,6 +361,22 @@
 		function toExcel(){
 			window.location.href='<%=basePath%>apply/excel.do';
 		}
+		
+		//去发送电子邮件页面
+		function sendEmail(EMAIL){
+			 top.jzts();
+			 var diag = new top.Dialog();
+			 diag.Drag=true;
+			 diag.Title ="发送电子邮件";
+			 diag.URL = '<%=basePath%>head/goSendEmail.do?EMAIL='+EMAIL+'&msg=appuser';
+			 diag.Width = 660;
+			 diag.Height = 470;
+			 diag.CancelEvent = function(){ //关闭事件
+				diag.close();
+			 };
+			 diag.show();
+		}
+		
 	</script>
 
 
