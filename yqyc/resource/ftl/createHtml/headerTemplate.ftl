@@ -67,20 +67,6 @@
 				</li>
 				<li class="nav_item ">
 					<a href="webservice.html">业务方案</a>
-					<!--<ul class="nav_item_open">
-						<li class="subopen">
-							<a href="javascript:;">业务方案</a>
-						</li>
-						<li class="nav_item2">
-							<a href="#szxxch">数字形象策划</a>
-						</li>
-						<li class="nav_item2">
-							<a href="#xtkffa">系统开发方案</a>
-						</li>
-						<li class="nav_item2">
-							<a href="#vrzzfa">VR制作方案</a>
-						</li>
-					</ul>-->
 				</li>
 				<li class="nav_item">
 					<a href="weboptimal.html">优选案例</a>
@@ -123,21 +109,6 @@
 				</li>
 				<li class="nav_item">
 					<a href="webfuture.html">云创未来</a>
-					<!--<ul class="nav_item_open">
-						<li class="subopen">
-							<a href="javascript:;">云创未来</a>
-						</li>
-						<li class="nav_item2">
-							<a href="#zzpt">自主平台</a>
-						</li>
-						<li class="nav_item2">
-							<a href="#gncp">概念产品</a>
-						</li>
-						<li class="nav_item2">
-							<a href="#fzgh">发展规划</a>
-						</li>
-						</li>
-					</ul>-->
 				</li>
 			</ul>
 			</div>

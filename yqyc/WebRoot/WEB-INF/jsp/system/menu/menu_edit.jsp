@@ -108,15 +108,15 @@
 							</c:if>
 							
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 状态 : </label>
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 导航显示 : </label>
 								<div class="col-sm-9">
 									<label style="float:left;padding-left: 8px;padding-top:7px;">
 										<input name="form-field-radio2" type="radio" class="ace" id="form-field-radio3" <c:if test="${pd.MENU_STATE == 1 }">checked="checked"</c:if> onclick="setType('2',1);"/>
-										<span class="lbl"> 显示</span>
+										<span class="lbl"> 否</span>
 									</label>
 									<label style="float:left;padding-left: 5px;padding-top:7px;">
 										<input name="form-field-radio2" type="radio" class="ace" id="form-field-radio4" <c:if test="${pd.MENU_STATE == 0 }">checked="checked"</c:if> onclick="setType('2',0);"/>
-										<span class="lbl"> 隐藏</span>
+										<span class="lbl"> 是</span>
 									</label>
 								</div>
 							</div>

@@ -106,7 +106,7 @@ public class CreateHtmlController extends BaseController {
 		return AppUtil.returnObject(new PageData(), map);
 	}
 	
-	/**生成首页html
+	/**生成html
 	 * @param response
 	 * @throws Exception
 	 */
@@ -143,11 +143,6 @@ public class CreateHtmlController extends BaseController {
 		}
 		DelAllFile.delFolder(PathUtil.getClasspath()+"index.html"); //生成代码前,先清空之前生成的文件
 		Freemarker.printFile("indexTemplate.ftl", root, "index.html", "", getFtlPath());
-        
-//		for(int i=0;i<typeArr.size()-6;i++){
-//			DelAllFile.delFolder(PathUtil.getClasspath()+"web_"+i+".html"); //生成代码前,先清空之前生成的文件
-//			Freemarker.printFile("web-"+i+"Template.ftl", root, "web_"+i+".html", "", getFtlPath());	
-//		}
 //		//介绍
 		DelAllFile.delFolder(PathUtil.getClasspath()+"webintroduce.html"); //生成代码前,先清空之前生成的文件
 		Freemarker.printFile("introduceTemplate.ftl", root, "webintroduce.html", "", getFtlPath());
@@ -181,15 +176,7 @@ public class CreateHtmlController extends BaseController {
 		//新闻详情
 		DelAllFile.delFolder(PathUtil.getClasspath()+"webdetail.html"); //生成代码前,先清空之前生成的文件
 		Freemarker.printFile("newDetailTemplate.ftl", root, "webdetail.html", "", getFtlPath());
-////		//
-//		DelAllFile.delFolder(PathUtil.getClasspath()+"websoudetail.html"); //生成代码前,先清空之前生成的文件
-//		Freemarker.printFile("sousuodetailTemplate.ftl", root, "websoudetail.html", "", getFtlPath());
-//		//搜索页面
-//		DelAllFile.delFolder(PathUtil.getClasspath()+"websearch.html"); //生成代码前,先清空之前生成的文件
-//		Freemarker.printFile("sousuoTemplate.ftl", root, "websearch.html", "", getFtlPath());
-//		//信箱
-//		DelAllFile.delFolder(PathUtil.getClasspath()+"webmailbox.html"); //生成代码前,先清空之前生成的文件
-//		Freemarker.printFile("mailboxTemplate.ftl", root, "webmailbox.html", "", getFtlPath());
+		//
 		return AppUtil.returnObject(new PageData(), map);
 	}
 	/** 图片

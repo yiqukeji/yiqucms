@@ -37,7 +37,7 @@
         -->
 		<div class="slide_container">
 			<ul class="rslides" id="slider">
-			<#list fieldList1 as var>
+			    <#list fieldList1 as var>
 				<li>
 					<img src="${var[1]}" alt="">
 				</li>

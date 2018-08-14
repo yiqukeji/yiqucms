@@ -32,7 +32,9 @@
 						<div class="col-xs-12">
 							<div id="zhongxin">
 								<div style="overflow: scroll; scrolling: yes;height:415px;width: 309px;">
-								<ul id="tree" class="tree" style="overflow:auto;"></ul>
+								<ul id="tree" class="tree" style="overflow:auto;">
+								
+								</ul>
 								</div>
 							</div>
 							<div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><img src="static/images/jiazai.gif" /><br/><h4 class="lighter block green">正在保存...</h4></div>
